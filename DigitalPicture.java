@@ -1,6 +1,6 @@
-
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.*;
 
 /**
  * Interface to describe a digital picture. A digital picture can have an
@@ -46,4 +46,8 @@ public interface DigitalPicture {
     public void explore(); // explore the picture
 
     public boolean write(String fileName); // write out a file
+        
+    public boolean write(File file) throws java.io.IOException; // write out a file
+    
+    public String getExtension();
 }

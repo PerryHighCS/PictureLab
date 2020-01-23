@@ -152,7 +152,7 @@ public class FileChooser {
         return pict;
     }
 
-    public static boolean showSaveDialog(JFrame parent, SimplePicture saveMe) {
+    public static boolean showSaveDialog(JFrame parent, DigitalPicture saveMe) {
         JFileChooser chooser = new JFileChooser("Save image as");
         chooser.setCurrentDirectory(getCurrentDirectory());      
         chooser.setFileFilter(new FileNameExtensionFilter("Images", saveMe.getExtension()));
