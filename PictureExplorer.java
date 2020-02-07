@@ -353,10 +353,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      */
     private void setUpNextAndPreviousButtons() {
         // create the arrow buttons
-        colPrevButton = new JButton("?");
-        colNextButton = new JButton("?");
-        rowPrevButton = new JButton("?");
-        rowNextButton = new JButton("?");
+        colPrevButton = new JButton("\uD83E\uDC44");
+        colNextButton = new JButton("\uD83E\uDC46");
+        rowPrevButton = new JButton("\uD83E\uDC44");
+        rowNextButton = new JButton("\uD83E\uDC46");
 
 
         // set the tool tip text
