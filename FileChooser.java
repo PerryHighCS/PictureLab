@@ -1,12 +1,9 @@
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import java.util.Properties;
 import java.io.*;
 import java.net.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -30,7 +27,6 @@ public class FileChooser {
     public static String getMediaPath(String fileName) {
         String path = null;
         String directory = getMediaDirectory();
-        boolean done = true;
         System.out.println("Media Directory: " + directory);
         // get the full path
         path = directory + fileName;
@@ -117,19 +113,24 @@ public class FileChooser {
      */
     public static String getMediaDirectory() {
         String directory = null;
-        boolean done = false;
         File dirFile = null;
 
         // try to find the images directory
         try {
             Path currentRelativePath = Paths.get("");
-            String s = currentRelativePath.toAbsolutePath().toString();
-            directory = s + File.separator + "images" + File.separator;
+            String originalDir = currentRelativePath.toAbsolutePath().toString();
+            if (!originalDir.endsWith(File.separator)) {
+                originalDir = originalDir + File.separator;
+            }
+            directory = originalDir + "images" + File.separator;
             directory = URLDecoder.decode(directory, "UTF-8");
             dirFile = new File(directory);
 
             if (dirFile.exists()) {
                 return directory;
+            }
+            else {
+                return URLDecoder.decode(originalDir, "UTF-8");
             }
         } catch (Exception ex) {
         }

@@ -143,11 +143,6 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     private DigitalPicture picture;
 
     /**
-     * The image icon used to display the picture
-     */
-    private ImageIcon scrollImageIcon;
-
-    /**
      * The image display
      */
     private ImageDisplay imageDisplay;
@@ -167,7 +162,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      *
      * @param picture the picture to explore
      */
-    public PictureExplorer(DigitalPicture picture) {
+    public PictureExplorer(DigitalPicture picture) {        
         // set the fields
         this.picture = picture;
         zoomFactor = 1;
@@ -357,34 +352,18 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      * information
      */
     private void setUpNextAndPreviousButtons() {
-        // create the image icons for the buttons
-        Icon prevIcon = new ImageIcon(DigitalPicture.class.getResource("leftArrow.gif"),
-                "previous index");
-        Icon nextIcon = new ImageIcon(DigitalPicture.class.getResource("rightArrow.gif"),
-                "next index");
         // create the arrow buttons
-        colPrevButton = new JButton(prevIcon);
-        colNextButton = new JButton(nextIcon);
-        rowPrevButton = new JButton(prevIcon);
-        rowNextButton = new JButton(nextIcon);
+        colPrevButton = new JButton("?");
+        colNextButton = new JButton("?");
+        rowPrevButton = new JButton("?");
+        rowNextButton = new JButton("?");
+
 
         // set the tool tip text
         colNextButton.setToolTipText("Click to go to the next column value");
         colPrevButton.setToolTipText("Click to go to the previous column value");
         rowNextButton.setToolTipText("Click to go to the next row value");
         rowPrevButton.setToolTipText("Click to go to the previous row value");
-
-        // set the sizes of the buttons
-        int prevWidth = prevIcon.getIconWidth() + 2;
-        int nextWidth = nextIcon.getIconWidth() + 2;
-        int prevHeight = prevIcon.getIconHeight() + 2;
-        int nextHeight = nextIcon.getIconHeight() + 2;
-        Dimension prevDimension = new Dimension(prevWidth, prevHeight);
-        Dimension nextDimension = new Dimension(nextWidth, nextHeight);
-        colPrevButton.setPreferredSize(prevDimension);
-        rowPrevButton.setPreferredSize(prevDimension);
-        colNextButton.setPreferredSize(nextDimension);
-        rowNextButton.setPreferredSize(nextDimension);
 
         // handle previous column button press
         colPrevButton.addActionListener(new ActionListener() {
@@ -570,12 +549,12 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
             // get the rectangle that defines the current view
             JViewport viewport = scrollPane.getViewport();
             Rectangle rect = viewport.getViewRect();
-            int rectMinX = (int) rect.getX();
+            //int rectMinX = (int) rect.getX();
             int rectWidth = (int) rect.getWidth();
-            int rectMaxX = rectMinX + rectWidth - 1;
-            int rectMinY = (int) rect.getY();
+            //int rectMaxX = rectMinX + rectWidth - 1;
+            //int rectMinY = (int) rect.getY();
             int rectHeight = (int) rect.getHeight();
-            int rectMaxY = rectMinY + rectHeight - 1;
+            //int rectMaxY = rectMinY + rectHeight - 1;
 
             // get the maximum possible x and y index
             int macolIndexX = (int) (picture.getWidth() * zoomFactor) - rectWidth - 1;
