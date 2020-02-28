@@ -138,8 +138,8 @@ public class FileChooser {
         return directory;
     }
 
-    public static DigitalPicture showOpenDialog(JFrame parent) {
-        DigitalPicture pict = null;
+    public static Picture showOpenDialog(JFrame parent) {
+        Picture pict = null;
         JFileChooser chooser = new JFileChooser("Select an image to open");
         chooser.setCurrentDirectory(getCurrentDirectory());
 
@@ -147,7 +147,7 @@ public class FileChooser {
         chooser.showOpenDialog(parent);
         File f = chooser.getSelectedFile();
         if(f!=null) {
-            pict = new SimplePicture(f);
+            pict = new Picture(f);
             setCurrentDirectory(chooser.getCurrentDirectory());
         }
         return pict;
