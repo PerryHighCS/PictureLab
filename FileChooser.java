@@ -144,13 +144,18 @@ public class FileChooser {
         chooser.setCurrentDirectory(getCurrentDirectory());
 
         chooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg","jpeg","png", "bmp", "jfif", "gif"));
-        chooser.showOpenDialog(parent);
-        File f = chooser.getSelectedFile();
-        if(f!=null) {
-            pict = new Picture(f);
-            setCurrentDirectory(chooser.getCurrentDirectory());
+        int result = chooser.showOpenDialog(parent);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            if(f != null) {
+                pict = new Picture(f);
+                setCurrentDirectory(chooser.getCurrentDirectory());
+            	return pict;
+            }
         }
-        return pict;
+        
+        return null;
     }
 
     public static boolean showSaveDialog(JFrame parent, DigitalPicture saveMe) {
