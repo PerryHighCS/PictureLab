@@ -667,7 +667,7 @@ public class SimplePicture implements DigitalPicture {
         }
 
         // get the extension
-        int posDot = fileName.indexOf('.');
+        int posDot = fileName.lastIndexOf('.');
         if (posDot >= 0)
             extension = fileName.substring(posDot + 1);
 
